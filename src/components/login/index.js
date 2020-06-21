@@ -1,5 +1,8 @@
 import React from 'react'
 import { Input, Button, Form, message } from 'antd';
+import { login } from "../../action/login"
+import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom"
 import server from "../../api"
 
 const layout = {
@@ -22,7 +25,10 @@ class Login extends React.Component {
   onFinished = async (values) => {
     if (this.state.loading) return;
     try {
-      const res = await server("/user/login", 'post', values)
+      const res = await server("/user/login", 'post', values);
+      if (res) {
+        this.props.login(res);        
+      }
     } catch (error) {
       message.error(error.msg || 'error')
     }
@@ -64,4 +70,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default withRouter(connect(null, { login })(Login))

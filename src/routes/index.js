@@ -1,18 +1,18 @@
-import React from 'react'
-import { Route, Redirect, Switch } from "react-router-dom"
-// import Header from "../components/Header"
-import Home from "../components/home"
-import Login from "../components/login"
-import Register from "../components/register"
+import * as React from 'react';
+import { HashRouter,Switch } from 'react-router-dom';
+import routerConfig from "./routeConfig"
+import FrontendAuth from '../components/auth'
 
-export default (
-    <div>
+class Router extends React.Component{
+    render(){
+        return(
+            <HashRouter>
+                <Switch>
+                    <FrontendAuth config={routerConfig}/>
+                </Switch>
+            </HashRouter>
+        );
+    }
+}
 
-        <Switch>
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/index" component={Home}></Route>
-            <Route path="/login" component={Login}></Route>
-            <Route path="/register" component={Register}></Route>
-        </Switch>
-    </div>
-)
+export default Router

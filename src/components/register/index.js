@@ -52,9 +52,7 @@ class Register extends React.Component {
 
     render() {
 
-        console.log(this.props.form);
         let { loading } = this.state;
-        // console.log(form)
         return (
             <Form
                 {...layout}

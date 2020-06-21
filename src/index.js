@@ -15,7 +15,7 @@ import thunk from "redux-thunk"
 
 //路由
 import { BrowserRouter as Router } from "react-router-dom"
-import routes from "./routes"
+import App from "./routes"
 
 //reducer
 import rootReducer from "./reducers"
@@ -29,9 +29,7 @@ const store = createStore(rootReducer, {}, composeWithDevTools(applyMiddleware(t
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router routes={routes}>
-      {routes}
-    </Router>
+    <App />
   </Provider>
   ,
   document.getElementById('root')
